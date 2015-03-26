@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+	
+		<title>Stig Quote Generator</title>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+
+		<style>
+			body {
+				color: #323232;
+				display: table;
+				font-family: 'Righteous';
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 10px;
+				background: #dadfe1;
+				text-align: center;
+			}
+
+			.icon {
+				margin: 0 auto;
+				max-width: 20%;
+			}
+
+				.icon img {
+					width: auto;
+					height: auto;
+					max-width: 100%;
+				}
+
+			.content {
+				text-align: center;
+				display: inline-block;
+			}
+			
+			.stig-quote {
+				font-size: 40px;
+				margin-bottom: 40px;
+				line-height: 1.4em;
+			}
+
+			@media screen and (max-width: 750px) {
+				.stig-quote {
+					font-size: 30px;
+				}
+			}
+
+			button {
+				font-size: 12px;
+				padding: 10px 15px;
+				background: #d64541;
+				border: none;
+				color: #dadfe1;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+
+			button:hover {
+				cursor: pointer;
+				background: #D53A35;
+			}
+
+			footer {
+				margin-top: 100px;
+				font-family: Monaco, monospace;
+				font-size: 12px;
+			}
+
+			footer:before {
+				content: '';
+				width: 150px;
+				height: 3px;
+				background-color: #323232;
+				display: block;
+				margin: 30px auto 10px auto;
+			}
+
+		</style>
+		
+	</head>
+	
+	<body onload="getQuote()">
+
+		<section class="icon">
+			<img src="helmet.png">
+		</section>
+		
+		<section class="content">
+			<h2 class="stig-quote" id="stig-quote"></h2>
+		</section>
+
+		<section class="refresh">
+			<button onclick="getQuote()">Get Another</button>
+			<p>Hint: press the spacebar</p>
+		</section>
+
+		<footer>
+			<h3>Stig Quote Generator by <a href="http://robblewis.me">Robb Lewis</a></h3>
+
+			<p>Fork on <a href="https://github.com/rmlewisuk/stig-quotes">GitHub</a> | Helmet icon by <a href="http://thenounproject.com/term/helmet/11506/">Jeremy J Bristol</a></p>
+		</footer>
+
+		<script src="someSay.js"></script>
+		<script src="andThat.js"></script>
+
+		<script type="text/javascript">
+
+			window.addEventListener("keydown", function(e) {
+				if (e.keyCode == 32) getQuote();
+			}, false);
+
+			var getQuote = function() {
+				var quote = someSay[Math.floor(Math.random()*someSay.length)] + ', ' + andThat[Math.floor(Math.random()*andThat.length)];
+
+				document.getElementById('stig-quote').innerHTML = quote;
+			}
+
+		</script>
+	
+
+	</body>
+	
+</html>
